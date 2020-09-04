@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="css/materialdesignicons.min.css" rel="stylesheet">
+	<link href="css/vuetify.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Index</title>
+
+</head>
+<body>
+	<div id="app">
+		<v-app>
+			<v-app-bar absolute color="blue darken-4" dark>
+				<v-container fluid>
+					<v-row class="align-center">
+						<v-col cols="auto">
+							<v-img src="pictures/ek_logo_compact.png" href="https://europakollegium.com/" fluid height="45" width="100" contain></v-img>
+						</v-col>
+						<v-col>
+							<v-row>
+								<v-toolbar-title>Informatika műhely</v-toolbar-title>
+								<v-divider class="mx-4" vertical></v-divider>
+								<v-toolbar-title class="align-self-center">Részecske-raj optimalizáció</v-toolbar-title>
+							</v-row>
+						</v-col>
+					</v-row>
+				</v-container>
+    		</v-app-bar>
+
+			<v-main>
+				<v-container class="mt-15">
+					<v-overlay :value.sync="overlay">
+						<v-progress-circular indeterminate size="64"></v-progress-circular>
+					</v-overlay>
+					<v-row>
+						<v-col>
+							<v-form ref="form" v-model="valid">
+								<v-container color="green">
+									<v-row class="d-flex align-center">
+										<v-select v-model="selectedFunction" :items="functions" :rules="[v => !!v || 'Function is required']" label="Function" required></v-select>
+										<v-spacer></v-spacer>
+										<v-text-field v-model="maxIteration" :rules="iterationRules" label="Number of Iterations" required :hint="'Enter number between ' + minIterationBound + ' and ' + maxIterationBound"></v-text-field>
+										<v-spacer></v-spacer>
+										<v-text-field v-model="populationSize" :rules="populationRules" label="Population Size" required :hint="'Enter number between ' + minPopulationSize + ' and ' + maxPopulationSize"></v-text-field>
+										<v-spacer></v-spacer>
+										<v-btn :disabled="!valid" color="success" @click="start"><v-icon left>mdi-arrow-right-drop-circle</v-icon> Start</v-btn>
+									</v-row>
+								</v-container>
+							</v-form>
+						</v-col>
+					</v-row>
+					<v-divider></v-divider>
+					<v-row>
+						<v-col md="6">
+							<v-card class="mx-auto" v-if="selectedFunction" flat>
+								<v-card-title>{{selectedFunction.name}} function</v-card-title>
+								<v-card-subtitle>Global optimum</v-card-subtitle>
+								<v-container>
+									<v-row>
+										<v-col>
+											<v-card flat>
+												<v-card-title>x = {{selectedFunction.analyticPosition.x}}</v-card-title>
+											</v-card>
+										</v-col>
+										<v-col>
+											<v-card flat>
+												<v-card-title>y = {{selectedFunction.analyticPosition.y}}</v-card-title>
+											</v-card>
+										</v-col>
+										<v-col sm="4">
+											<v-card outlined>
+												<v-card-title>f(x, y) = {{selectedFunction.analyticResult}}</v-card-title>
+											</v-card>
+										</v-col>
+									</v-row>
+								</v-container>
+								<v-img :src="'functions/' + (selectedFunction ? selectedFunction.name.toLowerCase() : '') + '.png'"></v-img>
+							</v-card>
+						</v-col>
+						<v-col md="6">
+							<!-- plot area -->
+							<v-card class="mx-auto" v-if="selectedFunction" flat>
+								<v-card-title>Plotting area</v-card-title>
+								<v-card-subtitle>Results</v-card-subtitle>
+								<v-container v-if="swarms.length > 0">
+									<v-row>
+										<v-col>
+											<v-card flat>
+												<v-card-title>x = {{globalBestPosition.x.toFixed(5)}}</v-card-title>
+												<v-card-subtitle>{{(globalBestPosition.x - selectedFunction.analyticPosition.x).toFixed(5)}}</v-card-subtitle>
+											</v-card>
+										</v-col>
+										<v-col>
+											<v-card flat>
+												<v-card-title>y = {{globalBestPosition.y.toFixed(5)}}</v-card-title>
+												<v-card-subtitle>{{(globalBestPosition.y - selectedFunction.analyticPosition.y).toFixed(5)}}</v-card-subtitle>
+											</v-card>
+										</v-col>
+										<v-col sm="4">
+											<v-card outlined>
+												<v-card-title>f(x, y) = {{globalBestValue.toFixed(5)}}</v-card-title>
+												<v-card-subtitle>{{(globalBestValue - selectedFunction.analyticResult).toFixed(5)}}</v-card-subtitle>
+											</v-card>
+										</v-col>
+									</v-row>
+								</v-container>
+								<v-container fluid>
+									<plotly-plotter :swarms="swarms" :selected-function="selectedFunction"></plotly-plotter>
+								</v-container>
+							</v-card>
+						</v-col>
+					</v-row>
+				</v-container>
+			</v-main>
+		  
+			<v-footer absolute app>
+				<div class="mx-auto">Kiss Gergely 2020.</div>
+			</v-footer>
+		</v-app>
+	</div>
+    
+	<script src="js/plotly-latest.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/vuetify.js"></script>
+	<script src="js/lodash.min.js"></script>
+	<script src="js/seedrandom.min.js"></script>
+	<script src="pso-algorithm.js"></script>
+	<script src="pso-algorithm-worker.js"></script>
+	<script src="plotly-plotter.js"></script>
+	<script src="app.js"></script>
+
+</body>
+</html>
