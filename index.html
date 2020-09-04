@@ -52,10 +52,10 @@
 					</v-row>
 					<v-divider></v-divider>
 					<v-row>
-						<v-col md="6">
-							<v-card class="mx-auto" v-if="selectedFunction" flat>
-								<v-card-title>{{selectedFunction.name}} function</v-card-title>
-								<v-card-subtitle>Global optimum</v-card-subtitle>
+						<v-col>
+							<v-card class="mx-auto" v-if="selectedFunction">
+								<v-card-title class="blue white--text">{{selectedFunction.name}} function</v-card-title>
+								<v-card-subtitle class="mt-5">Global optimum</v-card-subtitle>
 								<v-container>
 									<v-row>
 										<v-col>
@@ -75,14 +75,23 @@
 										</v-col>
 									</v-row>
 								</v-container>
-								<v-img :src="'functions/' + (selectedFunction ? selectedFunction.name.toLowerCase() : '') + '.png'"></v-img>
+								<v-expansion-panels flat>
+									<v-expansion-panel>
+										<v-expansion-panel-header>Graph</v-expansion-panel-header>
+										<v-expansion-panel-content>
+											<v-img :src="'functions/' + (selectedFunction ? selectedFunction.name.toLowerCase() : '') + '.png'" height="600" contain></v-img>
+										</v-expansion-panel-content>
+									</v-expansion-panel>
+								</v-expansion-panels>
 							</v-card>
 						</v-col>
-						<v-col md="6">
+					</v-row>
+					<v-row>
+						<v-col>
 							<!-- plot area -->
-							<v-card class="mx-auto" v-if="selectedFunction" flat>
-								<v-card-title>Plotting area</v-card-title>
-								<v-card-subtitle>Results</v-card-subtitle>
+							<v-card class="mx-auto" v-if="selectedFunction">
+								<v-card-title class="blue white--text">Plotting area</v-card-title>
+								<v-card-subtitle class="mt-5">Results</v-card-subtitle>
 								<v-container v-if="swarms.length > 0">
 									<v-row>
 										<v-col>
@@ -105,8 +114,12 @@
 										</v-col>
 									</v-row>
 								</v-container>
-								<v-container fluid>
-									<plotly-plotter :swarms="swarms" :selected-function="selectedFunction"></plotly-plotter>
+								<v-container>
+									<v-row>
+										<v-col>
+											<plotly-plotter :swarms="swarms" :selected-function="selectedFunction"></plotly-plotter>
+										</v-col>
+									</v-row>
 								</v-container>
 							</v-card>
 						</v-col>
