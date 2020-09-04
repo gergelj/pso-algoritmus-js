@@ -24,7 +24,7 @@ new Vue({
                 const vm = this;
                 this.overlay = true;
 
-                let worker = new Worker('pso-algorithm-worker.js');
+                let worker = new Worker('js/app/pso-algorithm-worker.js');
                 worker.addEventListener('message', function(e){
                     vm.overlay = false;
                     vm.swarms = e.data;
