@@ -9,6 +9,7 @@ new Vue({
             { value: null, text: "Select a function" }
         ],
         selectedFunction: null,
+        toPlot: true,
 
         overlay: false,
         swarms: [],
@@ -30,7 +31,7 @@ new Vue({
                     vm.swarms = e.data;
                 }, false);
 
-                let data = {maxIteration: this.maxIteration, populationSize: this.populationSize, functionName: this.selectedFunction.name};
+                let data = {maxIteration: this.maxIteration, populationSize: this.populationSize, functionName: this.selectedFunction.name, toPlot: this.toPlot};
                 worker.postMessage(data);
             }
         }

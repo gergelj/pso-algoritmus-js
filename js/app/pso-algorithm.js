@@ -115,11 +115,12 @@ function FunctionConfig(name){
  * @param {Number} populationSize - Number of particles in the swarm
  * @param {FunctionConfig} fnConfig - Selected function with configuration
  */
-function PsoAlgorithm(maxIteration, populationSize, fnConfig){
+function PsoAlgorithm(maxIteration, populationSize, fnConfig, toPlot){
     this.maxIteration = maxIteration;
     this.populationSize = populationSize;
     this.fnConfig = fnConfig;
     this.swarms = []
+    this.toPlot = toPlot;
 };
 
 /**
@@ -218,6 +219,12 @@ PsoAlgorithm.prototype.start = function(){
             }
         }
 
-        this.swarms.push(_.cloneDeep(swarm));
+        if(this.toPlot){
+            this.swarms.push(_.cloneDeep(swarm));
+        }
+    }
+
+    if(!this.toPlot){
+        this.swarms.push(swarm);
     }
 };

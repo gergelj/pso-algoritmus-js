@@ -5,7 +5,7 @@
 	<link href="css/vuetify.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Index</title>
+	<title>Részecske-raj optimalizáció</title>
 
 </head>
 <body>
@@ -15,7 +15,9 @@
 				<v-container fluid>
 					<v-row class="align-center">
 						<v-col cols="auto">
-							<v-img src="pictures/ek_logo_compact.png" href="https://europakollegium.com/" fluid height="45" width="100" contain></v-img>
+							<a href="https://europakollegium.com/">
+								<v-img src="pictures/ek_logo_compact.png" fluid height="45" width="100" contain></v-img>
+							</a>
 						</v-col>
 						<v-col>
 							<v-row>
@@ -43,6 +45,8 @@
 										<v-text-field v-model="maxIteration" :rules="iterationRules" label="Number of Iterations" required :hint="'Enter number between ' + minIterationBound + ' and ' + maxIterationBound"></v-text-field>
 										<v-spacer></v-spacer>
 										<v-text-field v-model="populationSize" :rules="populationRules" label="Population Size" required :hint="'Enter number between ' + minPopulationSize + ' and ' + maxPopulationSize"></v-text-field>
+										<v-spacer></v-spacer>
+										<v-checkbox v-model="toPlot" label="Plot"></v-checkbox>
 										<v-spacer></v-spacer>
 										<v-btn :disabled="!valid" color="success" @click="start"><v-icon left>mdi-arrow-right-drop-circle</v-icon> Start</v-btn>
 									</v-row>
@@ -88,10 +92,9 @@
 					</v-row>
 					<v-row>
 						<v-col>
-							<!-- plot area -->
+							<!-- Results -->
 							<v-card class="mx-auto" v-if="selectedFunction">
-								<v-card-title class="blue white--text">Plotting area</v-card-title>
-								<v-card-subtitle class="mt-5">Results</v-card-subtitle>
+								<v-card-title class="blue white--text">Results</v-card-title>
 								<v-container v-if="swarms.length > 0">
 									<v-row>
 										<v-col>
@@ -114,13 +117,16 @@
 										</v-col>
 									</v-row>
 								</v-container>
-								<v-container>
-									<v-row>
-										<v-col>
-											<plotly-plotter :swarms="swarms" :selected-function="selectedFunction"></plotly-plotter>
-										</v-col>
-									</v-row>
-								</v-container>
+								<template v-if="toPlot">
+									<v-card-subtitle class="mt-5">Plotting area</v-card-subtitle>
+									<v-container>
+										<v-row>
+											<v-col>
+												<plotly-plotter :swarms="swarms" :selected-function="selectedFunction"></plotly-plotter>
+											</v-col>
+										</v-row>
+									</v-container>
+								</template>
 							</v-card>
 						</v-col>
 					</v-row>

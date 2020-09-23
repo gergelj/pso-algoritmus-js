@@ -6,7 +6,8 @@ Vue.component('plotly-plotter', {
             traces: [],
             layout: {},
             frames: [],
-            sliderSteps: []
+            sliderSteps: [],
+            markerSize: 20
         }
     },
     template:`
@@ -66,7 +67,7 @@ Vue.component('plotly-plotter', {
                         text: [],
                         marker: {
                             color: 'rgb(17, 157, 255)',
-                            size: 10
+                            size: this.markerSize
                         }
                     }]
                 });
