@@ -59,6 +59,7 @@
 						<v-col>
 							<v-card class="mx-auto" v-if="selectedFunction">
 								<v-card-title class="blue white--text">{{selectedFunction.name}} function</v-card-title>
+								<v-img :src="'formulas/' + (selectedFunction ? selectedFunction.name.toLowerCase() : '') + '.jpg'" height="120" contain></v-img>
 								<v-card-subtitle class="mt-5">Global optimum</v-card-subtitle>
 								<v-container>
 									<v-row>
