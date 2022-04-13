@@ -1,0 +1,107 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper,left=30mm,right=25mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english,hungarian]{babel}
+\usepackage{t1enc}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{marginnote}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{newtxtext,newtxmath} % times new roman imitation
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{makeidx} % indexing enable
+\graphicspath{ {images/} }
+
+\usepackage[totoc]{idxlayout}
+
+\linespread{1.5}
+
+\makeindex
+
+% Equation capture settings
+\DeclareCaptionType{equ}[][List of equations]
+\captionsetup[equ]{labelformat=empty}
+
+% Figure caption settings
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+
+% Table caption settings
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
+
+% Code listing styles
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    escapeinside={\%(*}{*)},
+    tabsize=2
+}
+\lstset{style=codestyle}
+
+\usepackage[bibstyle=authoryear,
+            citestyle=authoryear,
+            backend=biber,
+            sorting=nyt]{biblatex}
+\addbibresource{bibliography.bib}
+
+\renewcommand{\labelenumii}{\roman{enumii})} % list: second level is roman numerals
+
+\title{
+TERMÉSZET ÁLTAL INSPIRÁLT OPTIMALIZÁCIÓS MEGOLDÁSOK
+}
+
+\author{Kiss Gergely}
+\date{Temesvár, 2022}
+
+\begin{document}
+
+\input{chapters/00_0_title}
+\input{chapters/00_1_belso}
+\input{chapters/00_2_abstract}
+\input{chapters/00_3_kivonat}
+\selectlanguage{hungarian}
+%\addtocontents{toc}{\protect\thispagestyle{empty}}
+\pagenumbering{gobble}
+\tableofcontents
+\listoffigures
+\listoftables
+%\listofequs
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{chapters/01_bevezeto}
+\input{chapters/02_optimalizacio}
+\input{chapters/03_evolucios}
+\input{chapters/04_genetikus}
+\input{chapters/05_pso}
+\input{chapters/06_kovetkeztetes}
+\input{chapters/07_irodalomjegyzek}
+
+\printindex
+
+\end{document}

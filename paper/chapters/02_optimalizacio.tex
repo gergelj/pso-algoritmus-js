@@ -1,0 +1,53 @@
+\chapter{Matematikai optimalizáció}
+
+Ebben a fejezetben a matematikai optimalizáció elméleti háttere kerül bemutatásra.
+
+\section{Matematikai optimalizáció definíciója}
+
+Matematikai optimalizáció \index{matematikai optimalizáció} alatt olyan folyamatot értünk, amely egy előre meghatározott kritérium alapján keresi a legjobb megoldást \parencite{vujanovic1980}. Ezt az eredményt hívjuk optimális értéknek. Az optimalizáció kritériumfüggvényét\footnote{Kritériumfüggvény. Szinonímái: költségfüggvény, energiafüggvény, hasznossági függvény.} \index{kritériumfüggvény} a ~\ref{eq:criteria} képlettel ábrázoljuk.
+
+\begin{equ}[!ht]
+  \begin{equation}
+    \begin{aligned}
+        f: &X \to Y, Y \subseteq R \\
+        f &= f(x) \\
+        x &= x_1, x_2, ..., x_n
+    \end{aligned}
+  \end{equation}
+  \caption{\label{eq:criteria}}
+\end{equ}
+
+Az optimalizáció valós esetben a ~\ref{eq:criteria} függvény minimális vagy maximális értékének a meghatározását jelenti, vagyis minimum esetében a ~\ref{eq:min} képlet, maximum esetében a ~\ref{eq:max} képlet érvényes.
+
+\begin{equ}[!ht]
+  \begin{equation}
+    f(x^*) \leq f(x), \forall x \in X
+  \end{equation}
+  \caption{\label{eq:min}}
+\end{equ}
+
+\begin{equ}[!ht]
+  \begin{equation}
+    f(x^*) \geq f(x), \forall x \in X
+  \end{equation}
+  \caption{\label{eq:max}}
+\end{equ}
+
+Mivel a fenti esetekben a függvény legkisebb (illetve legnagyobb) értékét az egész értelmezési tartomány szintjén az $x^*$ adja meg, ezért ezt globális optimalizációnak\footnote{Globális optimalizáció kiterjed az egész értelmezési tartomány szintjére. Lokális optimalizáció esetében csak az $x^*$ közelében vizsgáljuk a függvényt: $\parallel x^* - x \parallel < \varepsilon$} nevezzük.
+
+A kritériumfüggvény mellett más egyenletek (~\ref{eq:g} képlet) is szerepelhetnek a probléma meghatározásában.
+
+\begin{equ}[!ht]
+  \begin{equation}
+    g_k(x) = 0
+  \end{equation}
+  \caption{\label{eq:g}}
+\end{equ}
+
+Ilyenkor korlátos vagy megkötött matematikai optimalizációról beszélünk. A továbbiakban csak megkötés nélküli optimalizációról lesz szó.
+
+\section{Optimalizációs módszerek}
+
+Sokféle analitikus módszer segítségével lehet eljutni a kritériumfüggvény optimális értékéhez. Többségük a függvény többszörös differenciálhatóságát követeli meg, így összetettebb esetekben ezeket a módszereket nem tudjuk alkalmazni. Ahogy nő a probléma dimenzionalitása, úgy válik nehezebbé az analitikus eredmény kiszámítása (ha egyáltalán lehetséges az analitikus eredményig eljutni). Ilyenkor az egyedüli megoldást a numerikus módszerek \index{numerikus módszer} jelentik.
+
+Tegyük fel, hogy a számítógép segítségét kérjük ennek a problémának a megoldásában. Milyen módszerhez kell folyamodnunk, hogy a várt eredményt kapjuk meg? Legrosszabb esetben végigfutnánk az összes elemen, és így megtalálnánk a keresett legjobb értéket. Ez egyrészt nem kivitelezhető, mert a függvényeink általában folytonos térben mozognak, így végtelen számú elemet kellene leellenőrizni. Ha mégis valahogy felosztanánk a függvény dómenjét $N$ részre, az rettenetesen hosszú számítási időt venne igénybe. Egyedüli megoldást a numerikus algoritmusok kínálnak \parencite{rapaic2019}.
