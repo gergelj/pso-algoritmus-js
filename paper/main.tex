@@ -17,6 +17,13 @@
 \usepackage{fancyhdr}
 \usepackage{makeidx} % indexing enable
 \graphicspath{ {images/} }
+\usepackage{emptypage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
 
 \usepackage[totoc]{idxlayout}
 
@@ -81,15 +88,21 @@ TERMÉSZET ÁLTAL INSPIRÁLT OPTIMALIZÁCIÓS MEGOLDÁSOK
 \begin{document}
 
 \input{chapters/00_0_title}
+\blankpage
 \input{chapters/00_1_belso}
+\blankpage
+\blankpage
 \input{chapters/00_2_abstract}
+\blankpage
 \input{chapters/00_3_kivonat}
+\blankpage
 \selectlanguage{hungarian}
 %\addtocontents{toc}{\protect\thispagestyle{empty}}
 \pagenumbering{gobble}
 \tableofcontents
 \listoffigures
 \listoftables
+\blankpage\blankpage
 %\listofequs
 \newpage
 \pagenumbering{arabic}
