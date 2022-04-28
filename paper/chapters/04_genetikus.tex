@@ -25,7 +25,7 @@ A kiválasztott egyedek képezik azt a halmazt, amiből majd kikerülnek a jöve
 A keresztezést többféle módon lehet kivitelezni:
 
 \begin{itemize}
-    \item binárisan kódolt gének uniform keresztezése (~\ref{fig:keresztezes} ábra)
+    \item binárisan kódolt gének uniform keresztezése (\ref{fig:keresztezes} ábra)
     
 Két szülőtől két utód jön létre olyan módon, hogy egy véletlenszerűen generált bit-maszkot használva keverjük össze a szülők génjeit. (Az első utód az első szülőtől kap egy gént, ha a bit-maszkban 0 szerepel, ha pedig 1-es, akkor a második szülőtől. A második utód pedig ellenkező logikával kapja meg a génjeit).
 
@@ -38,7 +38,7 @@ Két szülőtől két utód jön létre olyan módon, hogy egy véletlenszerűen
 
     \item reális számokkal kódolt gének aritmetikai keresztezése
     
-A reális számoknál is hasonló keresztezés által születnek meg az utódok. A szülők ($x_1$ és $x_2$) génjeinek lineáris kombinációja alkotja az utódok génjeit (~\ref{eq:keresztezes} képlet).
+A reális számoknál is hasonló keresztezés által születnek meg az utódok. A szülők ($x_1$ és $x_2$) génjeinek lineáris kombinációja alkotja az utódok génjeit (\ref{eq:keresztezes} képlet).
 
 \begin{equ}[!ht]
   \begin{equation}
@@ -73,7 +73,7 @@ Miután befejeztük a genetikus műveleteket, el kell dönteni, hogy mely egyede
 
 A genetikus algoritmus empírikus analíziseként a szakirodalom tesztfüggvények elemzését ajánlja \parencite{kanovic2017}. Ebben a dolgozatban bemutató jelleggel csak egy ún. Rastrigin-féle tesztfüggvény \index{Rastrigin-függvény} elemzése kerül elemzésre.
 
-A Rastrigin-féle függvény érdekessége, hogy sok lokális minimuma van, és a ~\ref{eq:rastrigin} képlettel van definiálva. A függvény háromdimenziós grafikonja a ~\ref{fig:rastrigin3d} ábrán megtekinthető, valamint a függvény x-y síkra tett vetülete (~\ref{fig:rastriginxy} ábra).
+A Rastrigin-féle függvény érdekessége, hogy sok lokális minimuma van, és a \ref{eq:rastrigin} képlettel van definiálva. A függvény háromdimenziós grafikonja a \ref{fig:rastrigin3d} ábrán megtekinthető, valamint a függvény x-y síkra tett vetülete (\ref{fig:rastriginxy} ábra).
 
 \begin{equ}[!ht]
   \begin{equation}
@@ -109,7 +109,7 @@ function v = rastrigin(x)
 end
 \end{lstlisting}
 
-A kísérletet százszoros megismétlése után születtek meg az eredmények, melyek a ~\ref{tab:genresult} táblázatban találhatók. Mindemellett az egyedek kezdőpozíciói elrendezettsége kétféle módon lett meghatározva: uniform elrendezettség (zöld), nem uniform elrendezettség (kék).
+A kísérletet százszoros megismétlése után születtek meg az eredmények, melyek a \ref{tab:genresult} táblázatban találhatók. Mindemellett az egyedek kezdőpozíciói elrendezettsége kétféle módon lett meghatározva: uniform elrendezettség (zöld), nem uniform elrendezettség (kék).
 
 \begin{table}
     \centering
@@ -128,7 +128,7 @@ A kísérletet százszoros megismétlése után születtek meg az eredmények, m
 
 Az eredmények alapján megállapíthatjuk, hogy a generáció számának a növelésével nem javult az eredményünk pontossága, míg a populáció számának a növelése nagyban hozzájárult a jobb eredményhez. A genetikus algoritmusnál a populáció számának a növelése drasztikusan lassítja az optimalizációs folyamatot, így a probléma sajátosságaihoz képest kell eldönteni, hogy gyors és kevésbé pontos eredményt kapunk, vagy lassú de pontosabb eredményt.
 
-A legérdekesebb eredmények viszont az egyedek kezdőpozícióinak a változtatásakor születtek. Minden esetben jobb eredményt ért el az algoritmus, amikor a keresési mezőn nem egyenletesen (~\ref{fig:uniform} ábra), hanem tömbben (~\ref{fig:notuniform} ábra) helyezte el az egyedeket.
+A legérdekesebb eredmények viszont az egyedek kezdőpozícióinak a változtatásakor születtek. Minden esetben jobb eredményt ért el az algoritmus, amikor a keresési mezőn nem egyenletesen (\ref{fig:uniform} ábra), hanem tömbben (\ref{fig:notuniform} ábra) helyezte el az egyedeket.
 
 \begin{figure}
     \centering

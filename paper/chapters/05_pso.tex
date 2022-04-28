@@ -25,7 +25,7 @@ a részecskének az a pozíciója, amelyet eddigi útja során felvett, és a le
 
 A fent említett paraméterek mellett fontos még a raj szintjén történő információcsere, vagyis a raj szintjén elért eddigi legjobb helyzet -- $g[n]$. Ez a paraméter a valaha elért legjobb részecske helyzetét jelenti.
 
-A részecskék térben és időben történő változását a ~\ref{eq:vn} és a ~\ref{eq:xn} egyenletek határozzák meg.
+A részecskék térben és időben történő változását a \ref{eq:vn} és a \ref{eq:xn} egyenletek határozzák meg.
 
 \begin{equ}[!ht]
   \begin{equation}
@@ -56,7 +56,7 @@ $cg$ együttható a részecskék együttműködési hajlandóságát határozza 
     \label{fig:komponensek}
 \end{figure}
 
-Az algoritmus komponenseinek a kölcsönhatásait a ~\ref{fig:komponensek} ábra vizualizálja. Az egyes komponensek súlyozott értékei ($w$, $cp$ és $cg$) tetszőlegesen választhatóak, ebből eredendően több változata létezik a részecske-raj algoritmusnak. A dolgozatban bemutatott változatban ezek az együtthatók időben változó értékek, melyeknek az értékei a ~\ref{tab:psokomp} táblázatban találhatóak meg.
+Az algoritmus komponenseinek a kölcsönhatásait a \ref{fig:komponensek} ábra vizualizálja. Az egyes komponensek súlyozott értékei ($w$, $cp$ és $cg$) tetszőlegesen választhatóak, ebből eredendően több változata létezik a részecske-raj algoritmusnak. A dolgozatban bemutatott változatban ezek az együtthatók időben változó értékek, melyeknek az értékei a \ref{tab:psokomp} táblázatban találhatóak meg.
 
 \begin{table}
     \centering
@@ -78,7 +78,7 @@ Első lépésként a raj nagyságát kell meghatározni, ami becslések alapján
 
 Az algoritmus elején minden részecskéhez véletlenszerűen egy kezdő pozíciót kell rendelni ($x[0]$), ami egyben az egyedek eddigi legjobb pozícióját is jelenti ($p[0]$). A kritériumfüggvény alapján kiszámoljuk melyik pozíció a legjobb, ez lesz a globális legjobb pozíció ($g[0]$). Ezzel lezárult az inicializációs rész.
 
-A fő részben minden részecskének ki kell számolni a következő sebességét -- ~\ref{eq:vn} képlet, és ez alapján a pozícióját -- ~\ref{eq:xn} képlet. A részecske eddigi legjobb helyzetét is meg kell változtatni, ha az újabb pozícióra jobb eredmény születik. Miután bejeződött a ciklus, a globális pozíciót kell frissíteni úgy, hogy a részecskék eddigi legjobb pozícióinak az értékét hasonlítjuk össze a globálisan legjobb értékkel.
+A fő részben minden részecskének ki kell számolni a következő sebességét -- \ref{eq:vn} képlet, és ez alapján a pozícióját -- \ref{eq:xn} képlet. A részecske eddigi legjobb helyzetét is meg kell változtatni, ha az újabb pozícióra jobb eredmény születik. Miután bejeződött a ciklus, a globális pozíciót kell frissíteni úgy, hogy a részecskék eddigi legjobb pozícióinak az értékét hasonlítjuk össze a globálisan legjobb értékkel.
 
 \linespread{1}
 \begin{lstlisting}[caption={A részecske-raj algoritmus pszeudokódja \parencite{dorigo2008}}, captionpos=b]
@@ -100,11 +100,11 @@ Leállási feltételként leggyakrabban egy előre megadott maximális ciklussz�
 
 \section{A részecske-raj algoritmus kivizsgálása}
 
-A genetikus algoritmushoz hasonlóan, a részecske-raj algoritmus is demonstratív módon a Rastrigin-féle tesztfüggvény ~\ref{eq:rastrigin} által kerül elemzésre.
+A genetikus algoritmushoz hasonlóan, a részecske-raj algoritmus is demonstratív módon a Rastrigin-féle tesztfüggvény \ref{eq:rastrigin} által kerül elemzésre.
 
 A fent leírt algoritmus alapján és a megfelelő paraméterek segítségével egy sajátkezűleg írt programot készítettem \textit{Python} programnyelvben \parencite{kisspy2020}. A vektorszámításokat a \textit{NumPy} könyvtár segítségével oldottam meg, míg az eredmények grafikonon történő megjelenítéséhez a \textit{matplotlib} könyvtárat használtam. A dolgozatban szereplő Rastrigin-függvény és minden egyéb grafikonos ábra szintén ezzel a szoftverrel készült el.
 
-Az algoritmus elemzése négyféle környezetben zajlott, és mindegyik kísérlet 100-szoros ismétléssel történt. Az eredmények a ~\ref{tab:psores} táblázatban találhatók meg.
+Az algoritmus elemzése négyféle környezetben zajlott, és mindegyik kísérlet 100-szoros ismétléssel történt. Az eredmények a \ref{tab:psores} táblázatban találhatók meg.
 
 \begin{table}
     \centering
@@ -123,7 +123,7 @@ Az algoritmus elemzése négyféle környezetben zajlott, és mindegyik kísérl
 
 Az eredményekből egyértelműen látható, hogy az egyenletesen elhelyezkedő populáció esetében a ciklusszám növelése 100-ról 1000-re nem hatott ki az eredmény pontosságára, míg a nem egyenletesen elhelyezkedő populáció esetében a populáció számának a növelése nagyban javított az eredményen. Ez annak köszönhető, hogy az algoritmus komponenseinek az együtthatói időben változnak, így az idő múlásával csökken az egyedek felderítési hajlama, míg a szociális komponens erősödik. Ez azzal jár, hogy a kísérlet végére az egyedek egyre jobban hagyatkoznak az eddigi globálisan elért legjobb eredményre; így ha nem járták be a keresési mezőt, nagy valószínűséggel a legjobb eredmény egy lokális minimumban akad meg. A populáció számának a növelése esélyt ad a keresési mező jobb felderítésére, így megtalálva az optimális értéket.
 
-Az algoritmus vizualizációja érdekében készítettem egy \textit{Javascript} programot, amely bármilyen böngészőből lefuttatható \parencite{kissjs2020}. A Rastrigin-féle függvény mellett még egyéb más tesztfüggvények is elérhetőek, melyekre (a kiválasztott paraméterek mellett) ki lehet számolni az optimális értéket (~\ref{fig:psojs1} ábra). A számolás befejeztével megjelenik egy időcsúszkával ellátott grafikon (~\ref{fig:psojs2} ábra), ahol végig lehet követni a populáció helyzetét a generációk folyamán. A raj animált mozgásának köszönve szemügyre vehető egy-egy részecske vándorlása valamint az egész populáció szintjén történő együttműködés, viselkedésminta.
+Az algoritmus vizualizációja érdekében készítettem egy \textit{Javascript} programot, amely bármilyen böngészőből lefuttatható \parencite{kissjs2020}. A Rastrigin-féle függvény mellett még egyéb más tesztfüggvények is elérhetőek, melyekre (a kiválasztott paraméterek mellett) ki lehet számolni az optimális értéket (\ref{fig:psojs1} ábra). A számolás befejeztével megjelenik egy időcsúszkával ellátott grafikon (\ref{fig:psojs2} ábra), ahol végig lehet követni a populáció helyzetét a generációk folyamán. A raj animált mozgásának köszönve szemügyre vehető egy-egy részecske vándorlása valamint az egész populáció szintjén történő együttműködés, viselkedésminta.
 
 \begin{figure}
     \centering
